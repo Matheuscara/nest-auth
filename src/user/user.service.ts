@@ -8,31 +8,38 @@ export class UserService {
 
   async createUser(dto: CreateUserDto) {
     const user = await this.prismaService.user.findUnique({
-        where: {
-            email: dto.email,
-        }
+      where: {
+        email: dto.email,
+      },
     });
 
-    if(user) throw new ConflictException('Email duplicated');
+    if (user) throw new ConflictException('Email duplicated');
 
     const newUser = await this.prismaService.user.create({
-        data: {
-            ...dto,
-            password: await hash(dto.password, 10),
-        }
-    })
+      data: {
+        ...dto,
+        password: await hash(dto.password, 10),
+      },
+    });
 
     const { password, ...result } = newUser;
-    
 
-    return result
+    return result;
   }
 
   async findByEMail(email: string) {
     return await this.prismaService.user.findUnique({
       where: {
-        email: email
-      }
-    })
+        email: email,
+      },
+    });
+  }
+
+  async findById(id: number) {
+    return await this.prismaService.user.findUnique({
+      where: {
+        id: id,
+      },
+    });
   }
 }
