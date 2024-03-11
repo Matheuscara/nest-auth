@@ -57,11 +57,3 @@ npm run start:dev
 ## Additional Notes
 
 Make sure you have Docker installed and running if you plan to utilize Dockerfile.
-
-## Contributors
-
-- [Your Name](https://github.com/your_username)
-
-Feel free to contribute by opening issues or creating pull requests.
-
-For further assistance, contact [your_email@example.com](mailto:your_email@example.com).
