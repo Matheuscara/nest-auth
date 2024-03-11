@@ -9,7 +9,7 @@ This project is built using NestJS, featuring a complete authentication system i
 1. Clone the repository:
 
     ```bash
-    git clone [https://github.com/your_username/your_project.git](https://github.com/Matheuscara/nest-auth/edit/main/README.md)
+    git clone https://github.com/Matheuscara/nest-auth.git
     ```
 
 2. Navigate to the project directory:
