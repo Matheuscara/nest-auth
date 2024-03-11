@@ -1,7 +1,7 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { CreateUserDto } from './dto/user.dto';
-
+import { hash } from 'bcrypt';
 @Injectable()
 export class UserService {
   constructor(private prismaService: PrismaService) {}
@@ -17,8 +17,14 @@ export class UserService {
 
     const newUser = await this.prismaService.user.create({
         data: {
-            ...dto
+            ...dto,
+            password: await hash(dto.password, 10),
         }
     })
+
+    const { password, ...result } = newUser;
+    
+
+    return result
   }
 }
